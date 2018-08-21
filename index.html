@@ -2,7 +2,10 @@
 <html id="mainhtml" lang="en">
 <head>
 	<style>
-		span{
+		body{
+			color: white;
+		}
+		.header{
 			color: white;
 		}
 		.button{
@@ -152,6 +155,7 @@
 					document.getElementById('header').style.color = "white";
 					document.getElementById('main').style.backgroundColor = "black";
 					document.getElementById('mainhtml').style.backgroundColor = "black";
+					document.getElementsByTagName('SPAN').style.color = "white";
 				} else if(toggleInt == 1){
 					//css for when light mode is on
 					document.getElementById('button').style.backgroundColor = "white";
@@ -165,6 +169,7 @@
 					document.getElementById('header').style.color = "black";
 					document.getElementById('main').style.backgroundColor = "white";
 					document.getElementById('mainhtml').style.backgroundColor = "white";
+					document.getElementsByTagName('SPAN').style.color = "black";
 				}
 		}
 	</script>
