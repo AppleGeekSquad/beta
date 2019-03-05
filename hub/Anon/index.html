@@ -1,0 +1,1038 @@
+<!-- <?php
+  session_start(); /* Starts the session */
+  if($_SESSION['Active'] == false){ /* Redirects user to Login.php if not logged in */
+    header("location:login.php");
+	  exit;
+  }
+?> -->
+
+<html id="html">
+<head>
+  <title>Anon</title>
+  <link rel="shortcut icon" type="image/png" href="/resources/favicon.png"/>
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <style>
+  
+  html {
+    background: #141726;
+    visibility: hidden;
+    transition: all 2s linear;
+  }
+
+  .snow {
+    transition: all .1s ease;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+         top: 10;
+         left: 0;
+         right: 0;
+         margin: 0 auto;
+  }
+
+  .snow .svg {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+         top: 10;
+         left: 0;
+         right: 0;
+         margin: 0 auto;
+  }
+
+  #snow-top-layer {
+    will-change: transform;
+    transform: translateY(-200px);
+    animation: fall 22.5s infinite linear;
+  }
+
+  #snow-bottom-layer {
+    will-change: transform;
+    transform: translateY(-768px);
+    animation: fall 45s infinite linear;
+  }
+
+  @keyframes fall {
+
+    100% {
+      transform: translateY(0);
+    }
+
+  }
+  h1{
+    font-family: 'Lato', sans-serif;
+  }
+  .header{
+         font-family: 'Lato', sans-serif;
+         background-color: #0F1012;
+         color: white;
+         padding: 10px;
+         text-align: center;
+         border-radius: 10px;
+         height: 38px;
+         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+         opacity: 0.70;
+         position: fixed;
+         top: 10;
+         left: 0;
+         right: 0;
+         margin: 0 auto;
+         visibility: hidden;
+         }
+   .content{
+     position: fixed;
+     top: 70;
+     left: 0;
+     right: 0;
+     font-family: "Open Sans";
+   }
+   .button{
+     border: 0px;
+     font-family: 'Lato', sans-serif;
+     font-size: 13px;
+     background-color: grey;
+     color: white;
+     transition: all .25s ease-in-out;
+     opacity: 0.80;
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+     padding: 5px;
+     border-radius: 5px;
+     width: 40px;
+     position: relative;
+   }
+   .button_hover:hover{
+     cursor: pointer;
+     opacity: .95;
+     box-shadow: 0 10px 14px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+   }
+   .input{
+     font-family: 'Lato', sans-serif;
+     margin-right: 3px;
+     border-style: solid;
+     border-width: 3px;
+     opacity: 0.80;
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+     padding: 5px;
+     border-radius: 5px;
+     height: 30px;
+     resize: none;
+     transform: translate(0px, 10px);
+   }
+   .loading{
+    background: #141726;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    visibility: visible;
+   }
+
+    .lds-ellipsis {
+
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+  position: relative;
+  top: 50%;
+  transform: perspective(1px) translateY(-50%);
+}
+.lds-ellipsis div {
+  position: absolute;
+  top: 27px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #fff;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 6px;
+  animation: lds-ellipsis1 .5s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 6px;
+  animation: lds-ellipsis2 .5s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 26px;
+  animation: lds-ellipsis2 .5s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 45px;
+  animation: lds-ellipsis3 .5s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(19px, 0);
+  }
+}
+.noselect {
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+#customize{
+  padding: 18px;
+  background: url('/resources/gear.png');
+  background-repeat: no-repeat;
+  background-size: 36px 36px;
+  border: 0px;
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+}
+#customize:hover{
+  cursor: pointer;
+}
+#customizeBox{
+  visibility: hidden;
+  background-color: #9e9e9e;
+  position: fixed;
+  width: 30%;
+  height: 20%;
+  top: 20%;
+  left: 36%;
+  border-radius: 10px;
+  box-shadow: 0 0 1px 1px #9e9e9e;
+  z-index: 1;
+}
+#closeCustomize{
+  height: 20%;
+  position: absolute;
+  padding-right: 13px;
+  padding-left: 12px;
+  right: 2px;
+  top: 2px;
+  border: 0px;
+  background-color: darkred;
+  border-radius: 10px;
+  color: white;
+  font-size: 15px;
+  text-align: center;
+  
+}
+#closeCustomize:hover{
+  cursor: pointer;
+}
+#buttonText{
+  height: 15%; line-height: 15%; text-align: center; display: inline-block; vertical-align: middle; line-height: normal;
+}
+.avatarTextBox{
+  position: absolute;
+  top: 20px;
+  left: 13%;
+}
+.usernameTextBox{
+  position: absolute;
+  top: 20px;
+  left: 53%;
+}
+#avatarTextBox{
+  font-family: 'Lato', sans-serif;
+     margin-right: 3px;
+     border-style: solid;
+     border-width: 3px;
+     opacity: 0.80;
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+     padding: 5px;
+     border-radius: 5px;
+     height: 30px;
+}
+#usernameTextBox{
+  font-family: 'Lato', sans-serif;
+     margin-right: 3px;
+     border-style: solid;
+     border-width: 3px;
+     opacity: 0.80;
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+     padding: 5px;
+     border-radius: 5px;
+     height: 30px;
+}
+#avatarLabel{
+  font-family: 'Lato', sans-serif;
+  background-color: black;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  opacity: 0.70;
+}
+#usernameLabel{
+  
+  font-family: 'Lato', sans-serif;
+  background-color: black;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  opacity: 0.70;
+}
+#closeCustomizeContainer{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  height: 100%;
+  width: 100%;
+  color: white;
+  font-size: 50px;
+  z-index: 0;
+  visibility: hidden;
+}
+#closeCustomizeContainer:hover{
+  cursor: pointer;
+}
+#avatarIcon{
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  padding: 15px;
+  border-radius: 25px;
+  border: 0px;
+  margin-right: 5px;
+  transform: translate(0px, -5px);
+}
+#guildContainer{
+  background-color: grey;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  visibility: hidden;
+  top: 0px;
+  left: 0px;
+  position: absolute;
+
+  
+}
+#mofBackground{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: radial-gradient(circle, #424A4D, #3C434B, #343839, #232C2B);
+  animation: Gradient 15s ease infinite;
+  background-size: 100% 100%;
+}
+@keyframes Gradient { 
+    0%{background-position:49% 0%}
+    50%{background-position:52% 100%}
+    100%{background-position:49% 0%}
+}
+#selectGuildContainer{
+  font-family: 'Lato', sans-serif;
+  top: 5%;
+  left: 39%;
+  position: fixed;
+  width: 250px;
+  height: 50px;
+  background-color: #0F1012;
+  border: 1px solid #0F1012;
+  padding: 50px;
+  border-radius: 10px;
+  height: 38px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  opacity: 0.85;
+}
+#guildSelectInput{
+  position: absolute;
+  top: 70px;
+  left: 35px;
+  width: 210px;
+}
+#submitGuildPassword{
+  position: absolute;
+  top: 82px;
+  left: 255px;
+  width: 50px;
+}
+#guildInstructionText{
+  font-family: 'Lato', sans-serif;
+  position: absolute;
+  left: 0px;
+  color: white;
+  top: 5%;
+  left: 43%;
+  z-index: 1;
+}
+#connectionStatus{
+  font-family: 'Lato', sans-serif;
+  font-size: 12px;
+  color: white;
+  top: 105px;
+  position: absolute;
+  left: 44.25%
+}
+#changeGuild{
+  text-decoration: underline;
+  text-decoration-color: grey;
+  color: grey;
+}
+
+
+/*-----------------------------------------------*/
+
+
+#LGBTBackground{ 
+  height: 100%;
+  width: 100%;
+  left:0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+background-size: 1800% 1800%;
+visibility: hidden;
+
+-webkit-animation: rainbow 18s ease infinite;
+-z-animation: rainbow 18s ease infinite;
+-o-animation: rainbow 18s ease infinite;
+  animation: rainbow 18s ease infinite;}
+
+@-webkit-keyframes rainbow {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}
+@-moz-keyframes rainbow {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}
+@-o-keyframes rainbow {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}
+@keyframes rainbow { 
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}
+  </style>
+  
+  <script>var random = Math.floor(Math.random() * 7);
+var arrayColorDec = ["1752220"/*turquoise*/,"3066993"/*green*/,"3447003"/*blue*/,"10181046"/*purple*/,"15277667"/*hot pink*/,"15105570"/*orange*/,"15158332"/*red*/];
+var arrayColorHex = ["#1ABC9C"/*turquoise*/,"#2ECC71"/*green*/,"#3498DB"/*blue*/,"#9B59B6"/*purple*/,"#E91E63"/*hot pink*/,"#E67E22"/*orange*/,"#E74C3C"/*red*/];
+var arrayLogColor = ["turquoise","green","blue","purple","hot pink","orange","red"];
+var embedColor = arrayColorDec[random];
+var date = new Date();
+var avatarUrl = "/Anon/resources/%3F.png";
+var username = "Anonymous";
+var webHookUrl="https://discordapp.com/api/webhooks/487725240466800641/CNnpcnC7ILsuWHZwqejP1BjJmZ47CWBYR8wPPT84sXUW0o9OkkbLu4IfA8hxaS-aoMW2";
+
+function logBrowserInfo(){
+  var message = document.getElementById('input').value;
+  var logUrl = "https://discordapp.com/api/webhooks/483486458246856724/7qm6fLQF7THqROxpi5H0yuhSfA8L98lnQEvEZPR1R_Tj5FWsBJbm7meHokmb92xyGrTn";
+  var request = new XMLHttpRequest();
+  var browserInfo = {"embeds": [{
+    "color": 65280,
+    "title": "Anonymous Log",
+    "description": "A user sent " + "`" + message + "`" + " to #anonymous-messages using the color `" + arrayLogColor[random] + "` on " + browser.name + " " + browser.version + " on " + date
+  }]};
+  request.open("POST", logUrl,true);
+  request.setRequestHeader('Content-Type', 'application/json');
+  request.send(JSON.stringify(browserInfo));
+  return;
+}
+
+function postDataToWebhook(){
+  var avatarUrl = document.getElementById('avatarTextBox').value;
+  var username = document.getElementById('usernameTextBox').value;
+  var message = document.getElementById('input').value;
+  var payload = {
+    "avatar_url": avatarUrl,
+    "username": username,
+    "embeds": [{
+      "color": embedColor,
+      "description": message
+    }]
+  }
+  var oReq = new XMLHttpRequest();
+  var myJSONStr = payload;
+
+  if (document.getElementById('input').value.trim() == ""){
+      alert('Please enter a message');
+      document.getElementById('input').value = "";
+      return;
+  }else{
+    logBrowserInfo();
+    oReq.addEventListener("load", reqListener);
+    oReq.open("POST", webHookUrl,true);
+    oReq.setRequestHeader('Content-Type', 'application/json');
+    oReq.send(JSON.stringify(myJSONStr));
+    document.getElementById('input').value = "";
+    buttonClick();
+    return;
+  }
+  function staticPost(){
+    alert('test');
+  }
+  function reqListener () {
+      console.log(this.responseText);
+  }
+}</script>
+  <script>var customizeBoxOpen = false;
+var messageTimeout;
+var guildChosen = localStorage.getItem('defaultGuild');
+
+var guildPassword = "";
+
+function buttonClick(){
+      messageTimeout = true;
+  if (/Android/i.test(navigator.userAgent)) {
+      //code that executes if you're using an android Device
+      document.getElementById('button').style.background = "green url('/resources/check.png')";
+      document.getElementById('button').style.backgroundSize = "43px 43px";
+      document.getElementById('button').style.backgroundRepeat = "no-repeat";
+      document.getElementById('button').style.borderRadius = "50px";
+      document.getElementById('button').style.width = "43px";
+      document.getElementById('button').style.height = "43px";
+      document.getElementById("button").innerText = "";
+      document.getElementById("button").disabled = true;
+      document.getElementById("button").classList.remove('button_hover');
+      document.getElementById("button").style.padding = "10px";
+      setTimeout(buttonReset, 1500);
+  } else if (/Mobi/.test(navigator.userAgent)) {
+      //code that executes if you're using an iOS Device
+      document.getElementById('button').style.background = "green url('/resources/check.png')";
+      document.getElementById('button').style.backgroundSize = "43px 43px";
+      document.getElementById('button').style.backgroundRepeat = "no-repeat";
+      document.getElementById('button').style.borderRadius = "50px";
+      document.getElementById('button').style.width = "43px";
+      document.getElementById('button').style.height = "43px";
+      document.getElementById("button").innerText = "";
+      document.getElementById("button").disabled = true;
+      document.getElementById("button").classList.remove('button_hover');
+      setTimeout(buttonReset, 1500);
+  } else{
+      //code that executes if you're using a computer
+      document.getElementById('button').style.background = "green url('/resources/check.png')";
+      document.getElementById('button').style.backgroundSize = "22px 22px";
+      document.getElementById('button').style.backgroundRepeat = "no-repeat";
+      document.getElementById('button').style.borderRadius = "50px";
+      document.getElementById('button').style.width = "22px";
+      document.getElementById('button').style.height = "22px";
+      document.getElementById("button").innerText = "";
+      document.getElementById("button").disabled = true;
+      document.getElementById("button").classList.remove('button_hover');
+      setTimeout(buttonReset, 1500);
+  }
+}
+
+function buttonReset(){
+    messageTimeout = false;
+  if (/Android/i.test(navigator.userAgent)) {
+      //code that executes if you're using an android Device
+      document.getElementById('button').style.background = arrayColorHex[random];
+      document.getElementById('button').style.borderRadius = "5px";
+      document.getElementById('button').style.width = "75px";
+      document.getElementById('button').style.height = "55px";
+      document.getElementById("button").innerText = "Send";
+      document.getElementById("button").disabled = false;
+      document.getElementById("button").classList.add('button_hover');
+      document.getElementById('button').style.borderRadius = "5px";
+  } else if (/Mobi/.test(navigator.userAgent)) {
+      //code that executes if you're using an iOS Device
+      document.getElementById('button').style.background = arrayColorHex[random];
+      document.getElementById('button').style.borderRadius = "5px";
+      document.getElementById('button').style.width = "75px";
+      document.getElementById('button').style.height = "55px";
+      document.getElementById("button").innerText = "Send";
+      document.getElementById("button").disabled = false;
+      document.getElementById("button").classList.add('button_hover');
+      document.getElementById('button').style.borderRadius = "5px";
+  } else{
+      //code that executes if you're using a computer
+     document.getElementById('button').style.background = arrayColorHex[random];
+     document.getElementById('button').style.borderRadius = "5px";
+     document.getElementById('button').style.width = "40px";
+     document.getElementById('button').style.height = "25px";
+     document.getElementById("button").innerText = "Send";
+     document.getElementById("button").disabled = false;
+     document.getElementById("button").classList.add('button_hover');
+     document.getElementById('button').style.borderRadius = "5px";
+  }
+}
+
+function deviceDetect(){
+var arrayColorDec = ["1752220"/*turquoise*/,"3066993"/*green*/,"3447003"/*blue*/,"10181046"/*purple*/,"15277667"/*hot pink*/,"15105570"/*orange*/,"15158332"/*red*/];
+var arrayColorHex = ["#1ABC9C"/*turquoise*/,"#2ECC71"/*green*/,"#3498DB"/*blue*/,"#9B59B6"/*purple*/,"#E91E63"/*hot pink*/,"#E67E22"/*orange*/,"#E74C3C"/*red*/];
+var arrayLogColor = ["turquoise","green","blue","purple","hot pink","orange","red"];
+var embedColor = arrayColorDec[random];
+
+  if(localStorage.getItem('guildPassword') == null){
+    localStorage.setItem('defaultGuild', false);
+  }
+
+  UpdateGuildContainer();
+  document.getElementById('input').style.borderColor = arrayColorHex[random];
+  document.getElementById('button').style.backgroundColor = arrayColorHex[random];
+  document.getElementById('loading').style.zIndex = 0;
+  document.getElementById('loading').style.visibility = "hidden";
+  document.getElementById('header').style.visibility = "visible";
+  document.getElementById('html').style.visibility = "visible";
+  document.getElementById('html').style.background= "#141726";
+
+  if (/Android/i.test(navigator.userAgent)) {
+      //code that executes if you're using an android Device
+      document.getElementById('avatarIcon').style.padding = "26px";
+      document.getElementById('avatarIcon').style.backgroundSize = "52px 52px";
+      document.getElementById('customize').style.visibility = "visible";
+      document.getElementById('button').style.background = arrayColorHex[random];
+      document.getElementById('button').style.borderRadius = "5px";
+      document.getElementById('button').style.width = "75px";
+      document.getElementById('button').style.height = "55px";
+      document.getElementById("button").innerText = "Send";
+      document.getElementById("button").disabled = false;
+      document.getElementById("button").classList.add('button_hover');
+      document.getElementById('button').style.borderRadius = "5px";
+      document.getElementById('button').style.fontSize = "25px";
+      document.getElementById('snow').style.visibility = "hidden";
+      document.getElementById('header').style.marginTop = "25px";
+      document.getElementById('content').style.marginTop = "15px";
+      document.getElementById('header').style.height = "150px";
+      document.getElementById('header').style.borderRadius = "25px";
+      document.getElementById('input').style.borderRadius = "20px";
+      document.getElementById('header').style.fontSize = "70px";
+      document.getElementById('input').style.width = "70%";
+      document.getElementById("content").style.transform = "translate(0px, 145px)";
+      document.getElementById("input").style.height = "75px";
+      document.getElementById('content').style.width = "100%";
+      document.getElementById('input').style.fontSize = "25px";
+      document.getElementById('input').style.transform = "translate(0px, 28px)";
+      document.getElementById('selectGuildContainer').style.top = "10%";
+      document.getElementById('selectGuildContainer').style.left = "25%";
+      document.getElementById('selectGuildContainer').style.height = "150px";
+      document.getElementById('selectGuildContainer').style.width = "400px";
+      document.getElementById('selectGuildContainer').style.borderRadius = "20px";
+      document.getElementById('guildInstructionText').style.top = "9.5%";
+      document.getElementById('guildInstructionText').style.left = "28.5%";
+      document.getElementById('guildInstructionText').style.fontSize = "30px";
+      document.getElementById('guildSelectInput').style.top = "160px";
+      document.getElementById('guildSelectInput').style.height = "50px";
+      document.getElementById('guildSelectInput').style.width = "320px";
+      document.getElementById('guildSelectInput').style.fontSize= "25px";
+      document.getElementById('guildSelectInput').style.borderRadius = "10px";
+      document.getElementById('submitGuildPassword').style.top = "170.5px";
+      document.getElementById('submitGuildPassword').style.left = "385px";
+      document.getElementById('submitGuildPassword').style.height = "50px";
+      document.getElementById('submitGuildPassword').style.width = "85px";
+      document.getElementById('submitGuildPassword').style.fontSize = "20px";
+      document.getElementById('submitGuildPassword').style.borderRadius = "10px";
+      document.getElementById('connectionStatus').style.top = "330px";
+      document.getElementById('connectionStatus').style.fontSize = "20px";
+      document.getElementById('connectionStatus').style.left = "38%";
+      document.getElementById('customize').style.padding = "32.5px";
+      document.getElementById('customize').style.backgroundSize = "65px 65px";
+      document.getElementById('customize').style.bottom = "35px";
+      document.getElementById('customize').style.right = "35px";
+      document.getElementById('customizeBox').style.width = "65%";
+      document.getElementById('customizeBox').style.height = "9.5%";
+      document.getElementById('customizeBox').style.left = "18.5%";
+      document.getElementById('customizeBox').style.borderRadius = "20px";
+      document.getElementById('avatarTextBox').style.height = "35px";
+      document.getElementById('avatarTextBox').style.width = "200px";
+      document.getElementById('usernameTextBox').style.height = "35px";
+      document.getElementById('usernameTextBox').style.width = "200px";
+
+      if(localStorage.getItem('guildPassword') == "LGBT"){
+        document.getElementById('header').style.width = "400px";
+        document.getElementById('LGBTBackground').style.visibility = "visible";
+        document.getElementById('header').style.height = "175px";
+        document.getElementById('LGBTBackground').style.backgroundSize = "100% 100%";
+      }else if(localStorage.getItem('guildPassword') == "MoC"){
+        document.getElementById('header').style.width = "60%";
+        document.getElementById('LGBTBackground').style.backgroundSize = "100% 100%";
+      }else if(localStorage.getItem('guildPassword') == "MoF"){
+        document.getElementById('header').style.width = "60%";
+        document.getElementById('LGBTBackground').style.visibility = "hidden";
+      }
+  } else if (/Mobi/.test(navigator.userAgent)) {
+      //code that executes if you're using an iOS Device
+      document.getElementById('avatarIcon').style.padding = "26px";
+      document.getElementById('avatarIcon').style.backgroundSize = "52px 52px";
+      document.getElementById('customize').style.visibility = "visible";
+      document.getElementById('button').style.width = "80px";
+      document.getElementById('button').style.height = "50px";
+      document.getElementById('snow').style.visibility = "hidden";
+      document.getElementById('header').style.marginTop = "25px";
+      document.getElementById('content').style.marginTop = "15px";
+      document.getElementById('header').style.height = "150px";
+      document.getElementById('header').style.borderRadius = "25px";
+      document.getElementById('input').style.borderRadius = "20px";
+      document.getElementById('button').style.borderRadius = "5px";
+      document.getElementById('header').style.fontSize = "70px";
+      document.getElementById('input').style.width = "70%";
+      document.getElementById("content").style.transform = "translate(0px, 145px)";
+      document.getElementById("input").style.height = "75px";
+      document.getElementById('content').style.width = "100%";
+      document.getElementById('input').style.fontSize = "25px"
+      document.getElementById('button').style.fontSize = "25px";
+      document.getElementById('input').style.transform = "translate(0px, 28px)";
+      document.getElementById('selectGuildContainer').style.top = "10%";
+      document.getElementById('selectGuildContainer').style.left = "25%";
+      document.getElementById('selectGuildContainer').style.height = "150px";
+      document.getElementById('selectGuildContainer').style.width = "400px";
+      document.getElementById('selectGuildContainer').style.borderRadius = "20px";
+      document.getElementById('guildInstructionText').style.top = "9.5%";
+      document.getElementById('guildInstructionText').style.left = "28.5%";
+      document.getElementById('guildInstructionText').style.fontSize = "30px";
+      document.getElementById('guildSelectInput').style.top = "160px";
+      document.getElementById('guildSelectInput').style.height = "50px";
+      document.getElementById('guildSelectInput').style.width = "320px";
+      document.getElementById('guildSelectInput').style.fontSize= "25px";
+      document.getElementById('guildSelectInput').style.borderRadius = "10px";
+      document.getElementById('submitGuildPassword').style.top = "170.5px";
+      document.getElementById('submitGuildPassword').style.left = "385px";
+      document.getElementById('submitGuildPassword').style.height = "50px";
+      document.getElementById('submitGuildPassword').style.width = "85px";
+      document.getElementById('submitGuildPassword').style.fontSize = "20px";
+      document.getElementById('submitGuildPassword').style.borderRadius = "10px";
+      document.getElementById('connectionStatus').style.top = "330px";
+      document.getElementById('connectionStatus').style.fontSize = "20px";
+      document.getElementById('connectionStatus').style.left = "38%";
+      document.getElementById('customize').style.padding = "32.5px";
+      document.getElementById('customize').style.backgroundSize = "65px 65px";
+      document.getElementById('customize').style.bottom = "35px";
+      document.getElementById('customize').style.right = "35px";
+      document.getElementById('customizeBox').style.width = "65%";
+      document.getElementById('customizeBox').style.height = "8%";
+      document.getElementById('customizeBox').style.left = "18.5%";
+      document.getElementById('customizeBox').style.borderRadius = "20px";
+      document.getElementById('avatarTextBox').style.height = "35px";
+      document.getElementById('avatarTextBox').style.width = "200px";
+      document.getElementById('usernameTextBox').style.height = "35px";
+      document.getElementById('usernameTextBox').style.width = "200px";
+
+      if(localStorage.getItem('guildPassword') == "LGBT"){
+        document.getElementById('header').style.width = "400px";
+        document.getElementById('header').style.height = "175px";
+        document.getElementById('LGBTBackground').style.visibility = "visible";
+        document.getElementById('LGBTBackground').style.backgroundSize = "100% 100%";
+      }else if(localStorage.getItem('guildPassword') == "MoC"){
+        document.getElementById('header').style.width = "60%";
+        document.getElementById('LGBTBackground').style.visibility = "hidden";
+      }else if(localStorage.getItem('guildPassword') == "MoF"){
+        document.getElementById('header').style.width = "60%";
+        document.getElementById('LGBTBackground').style.visibility = "hidden";
+      }
+  } else{
+      //code that executes if you're using a computer
+      document.getElementById('customize').style.visibility = "visibile";
+      document.getElementById('header').style.width = "260px";
+      document.getElementById('input').style.width = "12%";
+      if(localStorage.getItem('guildPassword') == "LGBT"){
+        document.getElementById('header').style.width = "315px";
+        document.getElementById('LGBTBackground').style.visibility = "visible";
+      }else if(localStorage.getItem('guildPassword') == "MoC"){
+        document.getElementById('header').style.width = "260px";
+        document.getElementById('LGBTBackground').style.visibility = "hidden";
+      }else if(localStorage.getItem('guildPassword') == "MoF"){
+        document.getElementById('header').style.width = "260px";
+        document.getElementById('LGBTBackground').style.visibility = "hidden";
+      }
+  }
+}
+function selectGuild(){
+    if(document.getElementById('guildSelectInput').value.length > 0){
+        if(document.getElementById('guildSelectInput').value == "MoC"){
+            localStorage.setItem('guildPassword', document.getElementById('guildSelectInput').value);
+            localStorage.setItem('defaultGuild', true);
+            document.getElementById('header').innerText = "MoC Anonymous";
+            document.getElementById('mofBackground').style.visibility = "hidden";
+            document.getElementById('currentGuildIndicator').innerText = "Connected to 'Main of Chats'";
+            webHookUrl="https://discordapp.com/api/webhooks/487725240466800641/CNnpcnC7ILsuWHZwqejP1BjJmZ47CWBYR8wPPT84sXUW0o9OkkbLu4IfA8hxaS-aoMW2";
+        }else if(document.getElementById('guildSelectInput').value == "MoF"){
+            localStorage.setItem('guildPassword', document.getElementById('guildSelectInput').value);
+            localStorage.setItem('defaultGuild', true);
+            document.getElementById('header').innerText = "MoF Anonymous";
+            document.getElementById('header').style.backgroundColor = "#0F1012";
+            document.getElementById('mofBackground').style.visibility = "visible";
+            document.getElementById('currentGuildIndicator').innerText = "Connected to 'Main of Familiars'";
+            webHookUrl="https://discordapp.com/api/webhooks/495715299555934219/vRgnJUup2y0g5tWBRh5fj1TaM7wiHt6ihHt8VzQ7ZFDH_zr-a6y024RlVHZACwucNXLY";
+        }
+        else if(document.getElementById('guildSelectInput').value == "LGBT"){
+            localStorage.setItem('guildPassword', document.getElementById('guildSelectInput').value);
+            localStorage.setItem('defaultGuild', true);
+            document.getElementById('header').innerText = "LGBTQ+ Anonymous";
+            document.getElementById('header').style.backgroundColor = "#0F1012";
+            document.getElementById('mofBackground').style.visibility = "visible";
+            document.getElementById('currentGuildIndicator').innerText = "Connected to 'LGBTQ+'";
+            webHookUrl="https://discordapp.com/api/webhooks/499234323053150209/YmosIertawzf6Y_wJy2IfjrBATzkRG15fY_0vViVhGudPhxjjY78Ikwl2wVqfgFJvxnk";
+        }else{
+            localStorage.setItem('defaultGuild', false);
+            alert('Please enter a valid server password');
+        }
+    UpdateGuildContainer();
+    }else{
+        alert('Enter a Server Password(Assigned by AppleGeekSquad#3785)');
+    }
+}
+
+function UpdateGuildContainer(){
+    var guildContainer = document.getElementById('guildContainer');
+    defaultGuild = localStorage.getItem('defaultGuild');
+
+    if(defaultGuild == "true"){
+        guildContainer.style.visibility = "hidden";
+        if(localStorage.getItem('guildPassword') == "MoC"){
+            document.getElementById('header').innerText = "MoC Anonymous";
+            document.getElementById('mofBackground').style.visibility = "hidden";
+            document.getElementById('currentGuildIndicator').innerText = "Connected to 'Main of Chats'";
+            webHookUrl="https://discordapp.com/api/webhooks/487725240466800641/CNnpcnC7ILsuWHZwqejP1BjJmZ47CWBYR8wPPT84sXUW0o9OkkbLu4IfA8hxaS-aoMW2";
+        
+        }else if(localStorage.getItem('guildPassword') == "MoF"){
+            document.getElementById('header').innerText = "MoF Anonymous";
+            document.getElementById('mofBackground').style.visibility = "visibile";
+            document.getElementById('currentGuildIndicator').innerText = "Connected to 'Main of Familiars'";
+            webHookUrl="https://discordapp.com/api/webhooks/495715299555934219/vRgnJUup2y0g5tWBRh5fj1TaM7wiHt6ihHt8VzQ7ZFDH_zr-a6y024RlVHZACwucNXLY";
+        }else if(localStorage.getItem('guildPassword') == "LGBT"){
+            localStorage.setItem('defaultGuild', true);
+            document.getElementById('header').innerText = "LGBTQ+ Anonymous";
+            document.getElementById('header').style.backgroundColor = "#0F1012";
+            document.getElementById('mofBackground').style.visibility = "visible";
+            document.getElementById('currentGuildIndicator').innerText = "Connected to 'LGBTQ+'";
+            document.getElementById('header').style.width = "500px";
+            webHookUrl="https://discordapp.com/api/webhooks/499234323053150209/YmosIertawzf6Y_wJy2IfjrBATzkRG15fY_0vViVhGudPhxjjY78Ikwl2wVqfgFJvxnk";
+
+        }   
+    }else if(defaultGuild == "false"){
+            guildContainer.style.visibility = "visible";
+            }
+}
+var browser=get_browser();
+function get_browser() {
+    var ua=navigator.userAgent,tem,M=ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
+    if(/trident/i.test(M[1])){
+        tem=/\brv[ :]+(\d+)/g.exec(ua) || [];
+        return {name:'IE',version:(tem[1]||'')};
+        }
+    if(M[1]==='Chrome'){
+        tem=ua.match(/\bOPR|Edge\/(\d+)/)
+        if(tem!=null)   {return {name:'Opera', version:tem[1]};}
+        }
+    M=M[2]? [M[1], M[2]]: [navigator.appName, navigator.appVersion, '-?'];
+    if((tem=ua.match(/version\/(\d+)/i))!=null) {M.splice(1,1,tem[1]);}
+    return {
+      name: M[0],
+      version: M[1]
+    };
+ }
+function customize(){
+    customizeBoxOpen = true;
+    var header = document.getElementById('header');
+    var content = document.getElementById('content');
+    var customizeBox = document.getElementById('customizeBox');
+    var snow = document.getElementById('snow');
+    var customize = document.getElementById('customize');
+    var button = document.getElementById('button');
+    var closeCustomizeContainer = document.getElementById('closeCustomizeContainer');
+
+    customizeBox.style.visibility = "visible";
+    header.style.visibility = "hidden";
+    content.style.visibility = "hidden";
+    snow.style.filter = "blur(3px) brightness(35%)";
+    customize.style.visibility = "hidden";
+    button.style.transition = "all 0s";
+    closeCustomizeContainer.style.visibility = "visible";
+    document.getElementById('connectionStatus').style.visibility = "hidden";
+}
+function closeCustomize(){
+    if(document.getElementById('avatarTextBox').value.length > 0){
+        var avatarUrl = document.getElementById('avatarTextBox').value;
+    }else{
+        var avatarUrl = "/MoCAnon/resources/%3F.png";
+    }
+    if(document.getElementById('usernameTextBox').value.length > 0){
+        username = document.getElementById('usernameTextBox').value;
+        document.getElementById('input').placeholder = "Sending as " + "\'" + username + "\'...";
+    }else{
+        document.getElementById('input').placeholder = "Sending as 'Anonymous'...";
+    }
+    document.getElementById('avatarIcon').style.backgroundImage = 'url(' + avatarUrl + ')';
+    customizeBoxOpen = false;
+    var header = document.getElementById('header');
+    var content = document.getElementById('content');
+    var customizeBox = document.getElementById('customizeBox');
+    var snow = document.getElementById('snow');
+    var customize = document.getElementById('customize');
+    var button = document.getElementById('button');
+    var closeCustomizeContainer = document.getElementById('closeCustomizeContainer');
+
+    customizeBox.style.visibility = "hidden";
+    header.style.visibility = "visible";
+    content.style.visibility = "visible";
+    snow.style.filter = "blur(0px) brightness(100%)";
+    customize.style.visibility = "visible";
+    button.style.transition = "all .25s ease-in-out";
+    closeCustomizeContainer.style.visibility = "hidden";
+    document.getElementById('connectionStatus').style.visibility = "visible";
+}
+function changeGuild(){
+    localStorage.setItem('defaultGuild', false);
+    localStorage.setItem('guildPassword', null);
+    UpdateGuildContainer();
+}</script>
+  <script>var messageTimeout = false;
+function enterCheck(){
+  if (event.keyCode == 13) {
+      if(messageTimeout == false){
+      	postDataToWebhook();
+      } else if(messageTimeout == true){
+      	staticPost();
+      }
+    }
+}
+
+  document.onkeydown = function(evt) {
+    evt = evt || window.event;
+    var isEscape = false;
+    if ("key" in evt) {
+        isEscape = (evt.key == "Escape" || evt.key == "Esc");
+    } else {
+        isEscape = (evt.keyCode == 27);
+    }
+    if (isEscape) {
+        if(customizeBoxOpen == true){
+          closeCustomize();
+        }else{
+          return;
+        }
+    }
+};
+
+function OnKeyDownEnter(){
+    if (event.keyCode == 13) {
+        document.getElementById('submitGuildPassword').click();
+        deviceDetect();
+      }
+  };</script>
+  
+  
+</head>
+<body onload="setTimeout(deviceDetect, 900);">
+  <div id="mofBackground"></div>
+  <div id="LGBTBackground"></div>
+<center>
+    <div id="guildContainer">
+		<div class="noselect"><p id="guildInstructionText">Enter the password for the server <br> that you want to connect to.<br><a href="logout.php">logout</a></p></div>
+        <div id="selectGuildContainer"><input onkeyup="OnKeyDownEnter();" placeholder="Password" class="input" id="guildSelectInput" type="text"><button class="button button_hover" id="submitGuildPassword" onclick="selectGuild();">Submit</button></div>
+    </div>
+<div class="loading" id="loading"><div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div></div>
+</center>
+    <div class="snow" id="snow">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1536" preserveAspectRatio="xMidYMax slice">
+        <g fill="#FFF" fill-opacity=".15" transform="translate(55 42)">
+         <g id="snow-bottom-layer">
+          <ellipse cx="6" cy="1009.5" rx="6" ry="5.5"/>
+          <ellipse cx="138" cy="1110.5" rx="6" ry="5.5"/>
+          <ellipse cx="398" cy="1055.5" rx="6" ry="5.5"/>
+          <ellipse cx="719" cy="1284.5" rx="6" ry="5.5"/>
+          <ellipse cx="760" cy="1155.5" rx="6" ry="5.5"/>
+          <ellipse cx="635" cy="1459.5" rx="6" ry="5.5"/>
+          <ellipse cx="478" cy="1335.5" rx="6" ry="5.5"/>
+          <ellipse cx="322" cy="1414.5" rx="6" ry="5.5"/>
+          <ellipse cx="247" cy="1234.5" rx="6" ry="5.5"/>
+          <ellipse cx="154" cy="1425.5" rx="6" ry="5.5"/>
+          <ellipse cx="731" cy="773.5" rx="6" ry="5.5"/>
+          <ellipse cx="599" cy="874.5" rx="6" ry="5.5"/>
+          <ellipse cx="339" cy="819.5" rx="6" ry="5.5"/>
+          <ellipse cx="239" cy="1004.5" rx="6" ry="5.5"/>
+          <ellipse cx="113" cy="863.5" rx="6" ry="5.5"/>
+          <ellipse cx="102" cy="1223.5" rx="6" ry="5.5"/>
+          <ellipse cx="395" cy="1155.5" rx="6" ry="5.5"/>
+          <ellipse cx="826" cy="943.5" rx="6" ry="5.5"/>
+          <ellipse cx="626" cy="1054.5" rx="6" ry="5.5"/>
+          <ellipse cx="887" cy="1366.5" rx="6" ry="5.5"/>
+          <ellipse cx="6" cy="241.5" rx="6" ry="5.5"/>
+          <ellipse cx="138" cy="342.5" rx="6" ry="5.5"/>
+          <ellipse cx="398" cy="287.5" rx="6" ry="5.5"/>
+          <ellipse cx="719" cy="516.5" rx="6" ry="5.5"/>
+          <ellipse cx="760" cy="387.5" rx="6" ry="5.5"/>
+          <ellipse cx="635" cy="691.5" rx="6" ry="5.5"/>
+          <ellipse cx="478" cy="567.5" rx="6" ry="5.5"/>
+          <ellipse cx="322" cy="646.5" rx="6" ry="5.5"/>
+          <ellipse cx="247" cy="466.5" rx="6" ry="5.5"/>
+          <ellipse cx="154" cy="657.5" rx="6" ry="5.5"/>
+          <ellipse cx="731" cy="5.5" rx="6" ry="5.5"/>
+          <ellipse cx="599" cy="106.5" rx="6" ry="5.5"/>
+          <ellipse cx="339" cy="51.5" rx="6" ry="5.5"/>
+          <ellipse cx="239" cy="236.5" rx="6" ry="5.5"/>
+          <ellipse cx="113" cy="95.5" rx="6" ry="5.5"/>
+          <ellipse cx="102" cy="455.5" rx="6" ry="5.5"/>
+          <ellipse cx="395" cy="387.5" rx="6" ry="5.5"/>
+          <ellipse cx="826" cy="175.5" rx="6" ry="5.5"/>
+          <ellipse cx="626" cy="286.5" rx="6" ry="5.5"/>
+          <ellipse cx="887" cy="598.5" rx="6" ry="5.5"/>
+         </g>
+        </g>
+        <g fill="#FFF" fill-opacity=".3" transform="translate(65 63)">
+         <g id="snow-top-layer">
+          <circle cx="8" cy="776" r="8"/>
+          <circle cx="189" cy="925" r="8"/>
+          <circle cx="548" cy="844" r="8"/>
+          <circle cx="685" cy="1115" r="8"/>
+          <circle cx="858" cy="909" r="8"/>
+          <circle cx="874" cy="1438" r="8" transform="rotate(180 874 1438)"/>
+          <circle cx="657" cy="1256" r="8" transform="rotate(180 657 1256)"/>
+          <circle cx="443" cy="1372" r="8" transform="rotate(180 443 1372)"/>
+          <circle cx="339" cy="1107" r="8" transform="rotate(180 339 1107)"/>
+          <circle cx="24" cy="1305" r="8" transform="rotate(180 24 1305)"/>
+          <circle cx="8" cy="8" r="8"/>
+          <circle cx="189" cy="157" r="8"/>
+          <circle cx="548" cy="76" r="8"/>
+          <circle cx="685" cy="347" r="8"/>
+          <circle cx="858" cy="141" r="8"/>
+          <circle cx="874" cy="670" r="8" transform="rotate(180 874 670)"/>
+          <circle cx="657" cy="488" r="8" transform="rotate(180 657 488)"/>
+          <circle cx="443" cy="604" r="8" transform="rotate(180 443 604)"/>
+          <circle cx="339" cy="339" r="8" transform="rotate(180 339 339)"/>
+          <circle cx="24" cy="537" r="8" transform="rotate(180 24 537)"/>
+         </g>
+        </g>
+    </svg>
+    </div>
+<center>
+    <div id="customizeBox">
+      <div class="avatarTextBox"><p class="noselect" id="avatarLabel" >Icon</p><input type="text" id="avatarTextBox" placeholder="Ex: http://www.image.png"></input></div>
+      <div class="usernameTextBox"><p class="noselect" id="usernameLabel">Username</p><input type="text" id="usernameTextBox" placeholder="Ex: Anonymous"></input></div>
+    </div>
+    <div class="noselect">
+      <h1 class="header" id="header" align="top">MoC Anonymous</h1>
+      <div class="content" id="content"><button id="avatarIcon" disabled></button></button><textarea id="input" class="input" onkeyup="enterCheck();"type="text" placeholder="Sending as 'Anonymous'..."></textarea><button type="submit" id="button" class="button button_hover" onclick="postDataToWebhook();">Send</button></div>
+      <div id="connectionStatus"><p id="currentGuildIndicator"></p><p>Press <a id="changeGuild" href="javascript:changeGuild();">here</a> to change that</p></div>
+  </div>
+</center>
+    <div id="closeCustomizeContainer" onclick="closeCustomize();"></div>
+<button id="customize" type="submit" onclick="customize();"></button>
+  <script>
+    document.getElementById('avatarIcon').style.backgroundImage = 'url(' + avatarUrl + ')';
+  </script>
+</body>
+</html>
