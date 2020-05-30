@@ -1,3 +1,3 @@
 function comingSoon(){
-  alert('Undisclosed Projects Coming Soon')
+  windows.open("http://www.matt-middletonn.com/services");
 }
