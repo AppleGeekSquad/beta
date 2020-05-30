@@ -1,3 +1,3 @@
 function comingSoon(){
-  windows.open("http://www.matt-middletonn.com/services");
+  window.open("http://www.matt-middletonn.com/services");
 }
