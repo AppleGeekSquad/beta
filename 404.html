@@ -73,6 +73,9 @@
   #homepageLink{
     color: rgb(190, 190, 255);
   }
+  .onPageText:hover{
+    cursor: default;
+  }
   </style>
 </head>
 <link href="https://fonts.googleapis.com/css?family=Raleway:200,100,400" rel="stylesheet" type="text/css" />
@@ -80,11 +83,11 @@
   <canvas id="canvas"></canvas>
 <h1 id="header">
   <span
-     class="txt-rotate"
+     class="txt-rotate onPageText"
      data-period="2000"
      data-rotate='[ "Error 404: Page Not Found" ]'></span>
 </h1>
-<h2 id="subheader">Go to the <a href="/" id="homepageLink">Home Page</a></h2>
+<h2 id="subheader" class="onPageText">Go to the <a href="/" id="homepageLink">Home Page</a></h2>
 </div>
 </div>
 </body>
