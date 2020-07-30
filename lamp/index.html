@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lamp</title>
+    <script src="app.js"></script>
+    <style>
+        #on{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            height: 100%;
+            width: 50%;
+            background-color: rgb(0, 196, 0);
+            border: 0px;
+            font-size: 20vw;
+            color: white;
+        }
+        #off{
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            height: 100%;
+            width: 50%;
+            background-color: red;
+            border: 0px;
+            font-size: 20vw;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <button id="on" onclick="on()">On</button>
+    <button id="off" onclick="off()">Off</button>
+</body>
+</html>
