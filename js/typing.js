@@ -1,3 +1,5 @@
+let errorCode = null;
+
 var TxtRotate = function(el, toRotate, period) {
   this.toRotate = toRotate;
   this.el = el;
@@ -64,9 +66,15 @@ window.onload = function() {
       document.getElementById('header').style.top = "0px";
       document.getElementById('subheader').style.top = "100px";
       document.getElementById("particles-js").id = "no-particle";
-  } else{
+  } else if(/Mobi/.test(navigator.userAgent) || /Android/i.test(navigator.userAgent) != true){
       //code that executes if you're using a computer
       document.getElementById('header').style.top = "0px";
       document.getElementById('subheader').style.top = "90px";
+  }else{
+    errorCode = 100;
+    errorAlert();
   }
 };
+function errorAlert(){
+  alert('Error code ' + errorCode + '. Please clear your browser cache and reload the webpage');
+}
