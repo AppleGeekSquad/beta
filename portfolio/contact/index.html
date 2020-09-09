@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" class="noselect">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Varela+Round" />
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/fontController.css">
+    <link rel="stylesheet" href="/contact/style.css">
+</head>
+<body>
+    <h1 id="contacth1">Contact</h1>
+    <div class="buttonDiv" id="contactBackButton" onclick="contactBackButton();">
+        <p>Back</p>
+    </div>
+	<form id="contactForm" name="contactForm" class="contact-form pure-form pure-form-stacked" action="https://mcsscripts.000webhostapp.com/contactform.php" method="POST" target="print_popup" onsubmit="return required();" required>
+		<input type="text" name="name" placeholder="Full name">
+		<input type="text" name="mail" placeholder="Your e-mail">
+		<input type="text" name="subject" placeholder="Subject">
+		<input type="text" name="message" placeholder="Message">
+		<input type="submit" name="submit" value="Send">
+	</form>	
+</body>
+<script src="/js/app.js"></script>
+<script src="/js/deviceDetector.js"></script>
+</html>
