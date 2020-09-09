@@ -128,8 +128,8 @@ html{
     position: absolute;;
     width:50%;
     display:block;
-    overflow:auto;
-    height: 23%;	
+    overflow:visible;
+    height: auto;	
     top: 37%;
     left: 25%;
     z-index:1000;
