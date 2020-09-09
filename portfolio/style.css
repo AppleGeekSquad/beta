@@ -127,9 +127,7 @@ html{
     background-color:rgb(35,34,107);
     position: absolute;;
     width:50%;
-    display:block;
-    overflow:visible;
-    height: auto;	
+    height: 23vh;	
     top: 37%;
     left: 25%;
     z-index:1000;
