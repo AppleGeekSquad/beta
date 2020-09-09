@@ -126,8 +126,7 @@ html{
     opacity:0;
     background-color:rgb(35,34,107);
     position: absolute;;
-    width:50%;
-    height: 23vh;	
+    width:50%;	
     top: 37%;
     left: 25%;
     z-index:1000;
