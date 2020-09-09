@@ -127,11 +127,12 @@ html{
     background-color:rgb(35,34,107);
     position: absolute;;
     width:50%;
-    height:23%;
+    height:auto;
     top: 37%;
     left: 25%;
     z-index:1000;
     border-radius: 25px;
+    padding: 15px;
 }
 .popup1Loaded{
     opacity: 1;
