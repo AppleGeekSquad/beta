@@ -127,6 +127,8 @@ html{
     background-color:rgb(35,34,107);
     position: absolute;
     width:50%;	
+    height:30vh;
+    padding: 5px;
     top: 37%;
     left: 25%;
     z-index:1000;
