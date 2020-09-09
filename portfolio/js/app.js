@@ -72,7 +72,7 @@ function button4(){
 	disableButtons();
 }
 function contactBackButton(){
-	window.open('/','_self');
+	window.open('/portfolio','_self');
 }
 function onload(){
     hide(coverupDiv);
