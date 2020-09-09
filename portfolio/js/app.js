@@ -49,7 +49,7 @@ var button2elem = document.getElementById('button2');
 var button3elem = document.getElementById('button3');
 var button4elem = document.getElementById('button4');
 var headerh1 = document.getElementById('headerh1');
-var defaultTitle = "MCS";
+var defaultTitle = "Me";
 
 function button1(){
     console.log('button1 onclick function registererd');
