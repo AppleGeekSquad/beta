@@ -89,7 +89,7 @@ function button4(){
 	disableButtons();
 }
 function mobilecontactBackButton(){
-	window.open('/mobile','_self');
+	window.open('/portfolio/mobile','_self');
 }
 function disableButtons(){
 	button1elem.style.opacity = '0.5';
