@@ -18,10 +18,10 @@ function onload(){
     popupDiv3.style.zIndex = -1000;
 if(isMobile.any() == null){
 	console.log('redirecting');
-	window.open('/','_self');
+	window.open('/portfolio','_self');
 }else if(isMobile.iPad() == true){
 	console.log('redirecting');
-	window.open('/','_self');
+	window.open('/portfolio','_self');
 }else{
     console.log(isMobile.any());
 }
